@@ -9,11 +9,11 @@ function App() {
   console.log("process.env:", process.env);
   console.log("process.env.REACT_APP_NODE_ENV:", process.env.REACT_APP_NODE_ENV);
   console.log("process.env.REACT_APP_SERVER_BASE_URL:", process.env.REACT_APP_SERVER_BASE_URL);
-  const base_url = process.env.REACT_APP_NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_BASE_URL : process.env.REACT_APP_SERVER_BASE_URL;
-  console.log("Base URL: ", base_url)
-  
+  const base_url = process.env.REACT_APP_SERVER_BASE_URL;
+  console.log("Base URL: ", base_url);
+
   useEffect(() => {
-   axios.get(`${base_url}/getUsers`).then(res => { setRecordData(res.data) }).catch(err => alert(`Some error occured ==>${err}`));
+   axios.get(`${base_url}getUsers`).then(res => { setRecordData(res.data) }).catch(err => alert(`Some error occured ==>${err}`));
   }, []);
 
   const handleChange = (event) => {
@@ -23,7 +23,7 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axios.post(`${base_url}/addUser`, formData).then(res => { setFormData({ name: "", email: "" }); alert("User created successfully") }).catch(err => alert(`Some error occured ==>${err}`));
+    axios.post(`${base_url}addUser`, formData).then(res => { setFormData({ name: "", email: "" }); alert("User created successfully") }).catch(err => alert(`Some error occured ==>${err}`));
   };
 
   return (
