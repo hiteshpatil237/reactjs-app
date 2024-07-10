@@ -10,7 +10,8 @@ function App() {
   console.log("process.env.REACT_APP_NODE_ENV:", process.env.REACT_APP_NODE_ENV);
   console.log("process.env.REACT_APP_SERVER_BASE_URL:", process.env.REACT_APP_SERVER_BASE_URL);
   const base_url = process.env.REACT_APP_NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_BASE_URL : process.env.REACT_APP_SERVER_BASE_URL;
-
+  console.log("Base URL: ", base_url)
+  
   useEffect(() => {
    axios.get(`${base_url}/getUsers`).then(res => { setRecordData(res.data) }).catch(err => alert(`Some error occured ==>${err}`));
   }, []);
