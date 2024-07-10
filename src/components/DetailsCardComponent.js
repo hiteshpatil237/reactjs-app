@@ -11,4 +11,4 @@ function DetailsCardComponent({ sn, userN, email }) {
     )
 }
 
-export default DetailsCardComponent``
+export default DetailsCardComponent
